@@ -26,6 +26,9 @@ namespace DotnetTemplateDemo.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Register Swagger services
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +44,10 @@ namespace DotnetTemplateDemo.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // Register Swagger generator and UI middleware
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseEndpoints(endpoints =>
             {
