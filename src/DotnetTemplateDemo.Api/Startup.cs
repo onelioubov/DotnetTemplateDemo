@@ -26,6 +26,7 @@ namespace DotnetTemplateDemo.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddHealthChecks();
 
             // Register Swagger services
             services.AddSwaggerDocument();
@@ -52,6 +53,7 @@ namespace DotnetTemplateDemo.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/api/healthcheck");
             });
         }
     }
