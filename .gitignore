@@ -12,3 +12,4 @@ artifacts/
 .vs/
 .vscode/
 .tmp/
+.idea/
