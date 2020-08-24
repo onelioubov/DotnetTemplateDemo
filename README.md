@@ -16,3 +16,4 @@ Demo of a custom dotnet template project for Buffalo WebDev presentation
 [GitVersion configuration](https://gitversion.readthedocs.io/en/latest/input/docs/configuration/)  
 [Serilog for logging](https://serilog.net/)  
 [Using appsettings.json for Serilog configuration](https://github.com/serilog/serilog-settings-configuration)  
+[Deploying Azure App Service with GitHub Actions](https://docs.microsoft.com/en-us/azure/app-service/deploy-github-actions)  
