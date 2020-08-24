@@ -24,9 +24,10 @@ jobs:
       - name: Test
         run: dotnet test --no-restore --verbosity normal
       - name: Publish
-        run: dotnet publish --no-restore
+        run: dotnet publish --no-restore -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/dotnettemplatedemo'
       - name: Run Azure webapp deploy action using publish profile credentials
         uses: azure/webapps-deploy@v2
         with:
           app-name: service-dotnettemplatedemo-api
           publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/dotnettemplatedemo'
