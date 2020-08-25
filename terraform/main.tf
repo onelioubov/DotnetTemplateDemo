@@ -38,6 +38,7 @@ resource "azurerm_app_service" "dotnettemplatedemo_api" {
     APPINSIGHTS_INSTRUMENTATIONKEY                = join("", azurerm_application_insights.dotnettemplatedemo_api_insights.*.instrumentation_key)
     WEBSITE_RUN_FROM_PACKAGE                      = "1"
     SCM_DO_BUILD_DURING_DEPLOYMENT                = false
+    ASPNETCORE_ENVIRONMENT                        = "Production"
   }
 
   lifecycle {
