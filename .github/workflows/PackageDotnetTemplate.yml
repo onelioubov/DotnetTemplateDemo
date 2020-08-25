@@ -1,0 +1,32 @@
+name: DotnetTemplateDemo Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  publish:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
+          source-url: https://nuget.pkg.github.com/onelioubov/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.2
+        with:
+          versionSpec: '5.2.x'
+      - name: Pack the template
+        run: dotnet pack .packageSettings.csproj --version-suffix ${{ steps.gitversion.outputs.nuGetVersionV2 }} -o ./artifacts/
+      - name: Push package to GitHub Registry
+        run: dotnet nuget push ./artifacts/*.nupkg --no-symbols true
