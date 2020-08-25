@@ -20,7 +20,7 @@ jobs:
         with:
           dotnet-version: 3.1.301
       - name: Nuke restore + build + publish
-        run: ./build.sh compile+publish
+        run: ./build.sh --configuration Release compile+publish
       - name: Run Azure webapp deploy action using publish profile credentials
         uses: azure/webapps-deploy@v2
         with:
