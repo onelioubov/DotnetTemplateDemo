@@ -1,0 +1,45 @@
+mode: Mainline
+branches:
+  main:
+    tag: ''
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    track-merge-target: false
+    regex: ^main$
+    source-branches:
+    - develop
+    - release
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: true
+    pre-release-weight: 55000
+  release:
+    source-branches:
+    - develop
+    - main
+    - support
+    - release
+  feature:
+    source-branches:
+    - develop
+    - main
+    - release
+    - feature
+    - support
+    - hotfix
+  pull-request:
+    source-branches:
+    - develop
+    - main
+    - release
+    - feature
+    - support
+    - hotfix
+  hotfix:
+    source-branches:
+    - develop
+    - main
+    - support
+  support:
+    source-branches:
+    - main

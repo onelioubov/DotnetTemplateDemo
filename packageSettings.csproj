@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <PackageId>Dotnet.Template.Demo</PackageId>
+        <Title>Dotnet.Template.Demo</Title>
+        <Authors>Olga Nelioubov</Authors>
+        <Description>Responsible for packaging the Dotnet Demo Template</Description>
+        <PackageTags>dotnet-new;template;buffalowebdevdemo</PackageTags>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <ContentTargetFolders>content</ContentTargetFolders>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include=".\DotnetTemplateDemo\**" Exclude="**\bin\**;**\obj\**;**\.git\**;**\.tmp\**;**\.vs\**;**\.idea\**;**\artifacts\**" />
+        <Compile Remove="**\*" />
+    </ItemGroup>
+</Project>
