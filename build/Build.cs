@@ -80,7 +80,6 @@ class Build : NukeBuild
                         .SetFileVersion(GitVersion.AssemblySemFileVer)
                         .SetInformationalVersion(GitVersion.InformationalVersion)
                         .EnableNoRestore()
-                        .SetSelfContained(true)
                         .SetOutput(ArtifactsDirectory / project.Name));
                 }
                 else
