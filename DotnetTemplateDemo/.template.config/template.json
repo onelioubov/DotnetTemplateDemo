@@ -70,5 +70,17 @@
         "condition": "(!useAutomation)"
       }
     ]
-  }]
+  }],
+  "postActions": [
+    {
+      "condition": "(OS != \"Windows_NT\")",
+      "description": "Make scripts executable",
+      "manualInstructions": [{ "text": "Run 'chmod +x *.sh'" }],
+      "actionId": "CB9A6CF3-4F5C-4860-B9D2-03A574959774",
+      "args": {
+        "+x": "build.sh"
+      },
+      "continueOnError": true
+    }
+  ]
 }
