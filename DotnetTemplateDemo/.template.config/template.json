@@ -31,6 +31,12 @@
         "toLower": true
       },
       "replaces": "dotnettemplatedemo"
+    },
+    "useAutomation": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Use this to enable/disable Nuke, GitHub Actions, and Terraform",
+      "defaultValue": "true"
     }
   },
   "sources":[{
@@ -52,6 +58,16 @@
           "**/artifacts/**",
           "**/.terraform/**"
         ]
+      },
+      {
+        "exclude": [
+          "**/.nuke",
+          "**/build*",
+          "**/build/**",
+          "**/.github/**",
+          "**/terraform/**"
+        ],
+        "condition": "(!useAutomation)"
       }
     ]
   }]

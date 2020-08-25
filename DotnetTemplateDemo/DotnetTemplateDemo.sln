@@ -5,8 +5,10 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetTemplateDemo.Api", "src\DotnetTemplateDemo.Api\DotnetTemplateDemo.Api.csproj", "{77E611A3-9A32-4A7E-A9E9-9B130A249D5A}"
 EndProject
+#if (useAutomation)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{9B21D099-26CB-4D25-8C5E-F9ED07A0C18B}"
 EndProject
+#endif
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
