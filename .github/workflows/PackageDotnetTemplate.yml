@@ -1,4 +1,4 @@
-name: DotnetTemplateDemo Pipeline
+name: Template Packaging Pipeline
 
 on:
   push:
