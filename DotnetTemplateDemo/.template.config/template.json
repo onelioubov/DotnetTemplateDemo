@@ -13,6 +13,26 @@
     "language": "C#",
     "type": "item"
   },
+  "symbols": {
+    "serviceName": {
+      "type": "parameter",
+      "datatype": "string",
+      "description": "This is what the solution will be called, along with the corresponding API and Tests projects",
+      "defaultValue": "generic",
+      "FileRename": "DotnetTemplateDemo",
+      "replaces": "DotnetTemplateDemo",
+      "isRequired": true
+    },
+    "lowerCaseServiceName": {
+      "type": "generated",
+      "generator": "casing",
+      "parameters": {
+        "source": "serviceName",
+        "toLower": true
+      },
+      "replaces": "dotnettemplatedemo"
+    }
+  },
   "sources":[{
     "modifiers": [
       {
@@ -29,7 +49,8 @@
           "packageSettings.csproj",
           "**/.tmp/**",
           ".idea/**",
-          "**/artifacts/**"
+          "**/artifacts/**",
+          "**/.terraform/**"
         ]
       }
     ]

@@ -16,7 +16,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include=".\DotnetTemplateDemo\**" Exclude="**\bin\**;**\obj\**;**\.git\**;**\.tmp\**;**\.vs\**;**\.idea\**;**\artifacts\**" />
+        <Content Include=".\DotnetTemplateDemo\**" Exclude="**\bin\**;**\obj\**;**\.git\**;**\.tmp\**;**\.vs\**;**\.idea\**;**\artifacts\**;**\.terraform\**" />
         <Compile Remove="**\*" />
     </ItemGroup>
+
 </Project>
