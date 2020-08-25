@@ -30,13 +30,14 @@ resource "azurerm_app_service" "dotnettemplatedemo_api" {
 
   site_config {
     default_documents        = ["index.htm", "index.html", "hostingstart.html", "Default.htm", "Default.html"]
-    scm_type                 = "LocalGit"
     health_check_path        = "/api/healthcheck"
+    linux_fx_version         = "DOTNETCORE|3.1"
   }
 
   app_settings = {
     APPINSIGHTS_INSTRUMENTATIONKEY                = join("", azurerm_application_insights.dotnettemplatedemo_api_insights.*.instrumentation_key)
     WEBSITE_RUN_FROM_PACKAGE                      = "1"
+    SCM_DO_BUILD_DURING_DEPLOYMENT                = false
   }
 
   lifecycle {
