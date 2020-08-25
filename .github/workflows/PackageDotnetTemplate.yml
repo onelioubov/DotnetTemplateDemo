@@ -32,4 +32,4 @@ jobs:
       - name: Pack the template
         run: dotnet pack ./packageSettings.csproj --version-suffix ${{ steps.gitversion.outputs.nuGetVersionV2 }} -o ./artifacts/
       - name: Push package to GitHub Registry
-        run: dotnet nuget push ./artifacts/*.nupkg --no-symbols true
+        run: dotnet nuget push ./artifacts/*.nupkg --no-symbols true --source https://nuget.pkg.github.com/onelioubov/index.json
