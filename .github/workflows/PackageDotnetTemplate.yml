@@ -29,4 +29,4 @@ jobs:
       - name: Pack the template
         run: dotnet pack ./packageSettings.csproj -o ./artifacts/ /p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersionV2 }} /p:RepositoryUrl=https://github.com/onelioubov/DotnetTemplateDemo
       - name: Push package to GitHub Registry
-        run: nuget push ./artifacts/*.nupkg ${{ secrets.MyGet }} -Source https://www.myget.org/F/demopackages/api/v2/package -NoSymbols
+        run: dotnet nuget push ./artifacts/*.nupkg -k ${{ secrets.MyGet }} -s https://www.myget.org/F/demopackages/api/v2/package --no-symbols
