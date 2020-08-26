@@ -6,6 +6,7 @@ Demo of a custom dotnet template project for Buffalo WebDev presentation
 [Microsoft documentation for .NET Tempates](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates)  
 [Microsoft custom template tutorial](https://docs.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-item-template)  
 [.NET Template Parameter Generators](https://github.com/dotnet/templating/wiki/Available-Parameter-Generators)  
+[Post Action Registry](https://github.com/dotnet/templating/wiki/Post-Action-Registry)  
 [Useful Microsoft blog post](https://devblogs.microsoft.com/dotnet/how-to-create-your-own-templates-for-dotnet-new/)  
 
 ## Miscellaneous Resources
@@ -17,3 +18,5 @@ Demo of a custom dotnet template project for Buffalo WebDev presentation
 [Serilog for logging](https://serilog.net/)  
 [Using appsettings.json for Serilog configuration](https://github.com/serilog/serilog-settings-configuration)  
 [Deploying Azure App Service with GitHub Actions](https://docs.microsoft.com/en-us/azure/app-service/deploy-github-actions)  
+[Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)  
+[Another ADR Resource](https://github.com/joelparkerhenderson/architecture_decision_record)    
