@@ -61,8 +61,69 @@ class Build : NukeBuild
                 .SetInformationalVersion(GitVersion.InformationalVersion)
                 .EnableNoRestore());
         });
-    Target Publish => _ => _
+    
+    Target Test => _ => _
         .After(Compile)
+        .Executes(() =>
+        {
+            var testProjects = Solution.AllProjects.Where(project =>
+                project.Path.ToString().Contains(TestsDirectory.ToString()));
+            foreach (var testProject in testProjects)
+            {
+                DotNetTest(t => t.EnableNoBuild()
+                    .SetProjectFile(testProject)
+                    .SetConfiguration(Configuration)
+                    .SetWorkingDirectory(TestsDirectory)
+                    .SetLogger("nunit;LogFilePath=TestResults/" + testProject.Name + "-Result.xml"));
+            }
+        });
+    
+    Target GenerateClient => _ => _
+        .DependsOn(Compile)
+        .Executes(() =>
+        {
+            var clientDir = SourceDirectory;
+            var clientProjDir = clientDir / "DotnetTemplateDemo.Client";
+            EnsureCleanDirectory(clientProjDir);
+
+            var openApiPath = clientDir / "DotnetTemplateDemo.json";
+
+            NSwagAspNetCoreToOpenApi(x => x
+                .SetNSwagRuntime("NetCore31")
+                .SetAssembly(SourceDirectory / "DotnetTemplateDemo.Api" / "bin" / Configuration.ToString() / "netcoreapp3.1" / "DotnetTemplateDemo.Api.dll")
+                .SetDocumentName("v1")
+                .EnableUseDocumentProvider()
+                .SetOutputType(SchemaType.OpenApi3)
+                .SetOutput(openApiPath)
+            );
+            
+            NSwagSwaggerToCSharpClient(x => x
+                .SetNSwagRuntime("NetCore31")
+                .SetInput(openApiPath)
+                .SetOutput(clientProjDir / "DotnetTemplateDemo.Client.cs")
+                .SetNamespace("DotnetTemplateDemo.Clients")
+                .SetGenerateClientInterfaces(true)
+                .SetGenerateExceptionClasses(true)
+                .SetExceptionClass("{controller}ClientException")
+            );
+
+             var version = GitRepository.Branch.Equals("main", StringComparison.OrdinalIgnoreCase) ? GitVersion.MajorMinorPatch : GitVersion.NuGetVersionV2;
+             
+             DotNet($"new classlib -o {clientProjDir}", workingDirectory: clientProjDir);
+             DeleteFile(clientProjDir / "Class1.cs");
+             DotNet($"add package Newtonsoft.Json", workingDirectory: clientProjDir);
+             DotNet("add package System.ComponentModel.Annotations", workingDirectory: clientProjDir);
+             
+               DotNetPack(x => x
+                   .SetProject(clientProjDir)
+                   .SetOutputDirectory(ArtifactsDirectory)
+                   .SetConfiguration(Configuration)
+                   .SetVersion(version)
+                   .SetIncludeSymbols(true)
+              );
+        });
+    Target Publish => _ => _
+        .After(Test)
         .Executes(() =>
         {
             var projectSolution = Solution.AllProjects.Where(p =>

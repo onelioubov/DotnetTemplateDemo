@@ -10,7 +10,7 @@ resource "azurerm_resource_group" "dotnettemplatedemorg" {
   location = var.location
 }
 
-# create application insights for reference-store
+# create application insights for dotnettemplatedemo_api
 resource "azurerm_application_insights" "dotnettemplatedemo_api_insights" {
   name                = "${var.prefix}-dotnettemplatedemo-api"
   location            = var.location
@@ -19,7 +19,7 @@ resource "azurerm_application_insights" "dotnettemplatedemo_api_insights" {
   retention_in_days   = 90
 }
 
-# create resource for reference-store
+# create resource for dotnettemplatedemo_api
 resource "azurerm_app_service" "dotnettemplatedemo_api" {
   name                = "${var.prefix}-dotnettemplatedemo-api"
   location            = var.location
