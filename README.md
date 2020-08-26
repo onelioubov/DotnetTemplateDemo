@@ -6,7 +6,8 @@ Demo of a custom dotnet template project for Buffalo WebDev presentation
 [Microsoft documentation for .NET Tempates](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates)  
 [Microsoft custom template tutorial](https://docs.microsoft.com/en-us/dotnet/core/tutorials/cli-templates-create-item-template)  
 [.NET Template Parameter Generators](https://github.com/dotnet/templating/wiki/Available-Parameter-Generators)  
-[Post Action Registry](https://github.com/dotnet/templating/wiki/Post-Action-Registry)  
+[Post Action Registry](https://github.com/dotnet/templating/wiki/Post-Action-Registry)    
+[Testing Your Templates](https://github.com/dotnet/templating/wiki/Testing-your-templates)  
 [Useful Microsoft blog post](https://devblogs.microsoft.com/dotnet/how-to-create-your-own-templates-for-dotnet-new/)  
 
 ## Miscellaneous Resources
