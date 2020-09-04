@@ -37,6 +37,16 @@
       "datatype": "bool",
       "description": "Use this to enable/disable Nuke, GitHub Actions, and Terraform",
       "defaultValue": "true"
+    },
+    "windowsMachine": {
+      "type": "generated",
+      "generator": "switch",
+      "parameters": {
+      "datatype": "bool",
+      "condition": "(OS == \"Windows_NT\")", 
+      "value": "true",
+      "defaultValue": "false"
+      }
     }
   },
   "sources":[{

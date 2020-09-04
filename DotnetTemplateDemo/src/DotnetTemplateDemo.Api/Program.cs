@@ -17,16 +17,9 @@ namespace DotnetTemplateDemo.Api
         {
             try
             {
-                var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-                var platform = env.Equals("Development") ? 
-                    (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? 
-                        ".Windows" : ".LinuxOsx") 
-                    : "";
                 _configuration = new ConfigurationBuilder()
                     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                    .AddJsonFile(
-                        $"appsettings.{env ?? "Production"}{platform}.json",
-                        optional: true, reloadOnChange: true)
+                    .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true, reloadOnChange: true)
                     .AddEnvironmentVariables()
                     .AddCommandLine(args)
                     .Build();
