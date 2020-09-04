@@ -42,10 +42,17 @@
       "type": "generated",
       "generator": "switch",
       "parameters": {
-      "datatype": "bool",
-      "condition": "(OS == \"Windows_NT\")", 
-      "value": "true",
-      "defaultValue": "false"
+        "datatype": "bool",
+        "cases": [
+          {
+          "condition": "(OS == \"Windows_NT\")",
+          "value": "true"
+          },
+          {
+            "condition": "(OS != \"Windows_NT\")",
+            "value": "false"
+          }
+        ]
       }
     }
   },
