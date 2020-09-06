@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.101
-      - name: Nuke restore + build + publish
+      - name: Nuke restore + build + test + publish
         run: ./build.sh --configuration Release -target compile+test+publish
       - name: Run Azure webapp deploy action using publish profile credentials
         uses: azure/webapps-deploy@v2
