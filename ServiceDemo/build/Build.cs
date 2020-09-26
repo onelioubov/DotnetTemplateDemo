@@ -85,14 +85,14 @@ class Build : NukeBuild
         .Executes(() =>
         {
             var clientDir = SourceDirectory;
-            var clientProjDir = clientDir / "DotnetTemplateDemo.Client";
+            var clientProjDir = clientDir / "ServiceDemo.Client";
             EnsureCleanDirectory(clientProjDir);
 
-            var openApiPath = clientDir / "DotnetTemplateDemo.json";
+            var openApiPath = clientDir / "ServiceDemo.json";
 
             NSwagAspNetCoreToOpenApi(x => x
                 .SetNSwagRuntime("NetCore31")
-                .SetAssembly(SourceDirectory / "DotnetTemplateDemo.Api" / "bin" / Configuration.ToString() / "netcoreapp3.1" / "DotnetTemplateDemo.Api.dll")
+                .SetAssembly(SourceDirectory / "ServiceDemo.Api" / "bin" / Configuration.ToString() / "netcoreapp3.1" / "ServiceDemo.Api.dll")
                 .SetDocumentName("v1")
                 .EnableUseDocumentProvider()
                 .SetOutputType(SchemaType.OpenApi3)
@@ -102,8 +102,8 @@ class Build : NukeBuild
             NSwagSwaggerToCSharpClient(x => x
                 .SetNSwagRuntime("NetCore31")
                 .SetInput(openApiPath)
-                .SetOutput(clientProjDir / "DotnetTemplateDemo.Client.cs")
-                .SetNamespace("DotnetTemplateDemo.Clients")
+                .SetOutput(clientProjDir / "ServiceDemo.Client.cs")
+                .SetNamespace("ServiceDemo.Clients")
                 .SetGenerateClientInterfaces(true)
                 .SetGenerateExceptionClasses(true)
                 .SetExceptionClass("{controller}ClientException")

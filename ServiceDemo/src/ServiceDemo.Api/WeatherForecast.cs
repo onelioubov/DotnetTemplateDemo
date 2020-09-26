@@ -1,6 +1,6 @@
 using System;
 
-namespace DotnetTemplateDemo.Api
+namespace ServiceDemo.Api
 {
     public class WeatherForecast
     {

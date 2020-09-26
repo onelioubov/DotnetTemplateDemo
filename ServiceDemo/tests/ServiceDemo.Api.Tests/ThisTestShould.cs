@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace DotnetTemplateDemo.Api.Tests
+namespace ServiceDemo.Api.Tests
 {
     [TestFixture]
     public class ThisTestShould

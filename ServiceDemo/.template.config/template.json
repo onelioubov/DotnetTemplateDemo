@@ -19,8 +19,8 @@
       "datatype": "string",
       "description": "This is what the solution will be called, along with the corresponding API and Tests projects",
       "defaultValue": "generic",
-      "FileRename": "DotnetTemplateDemo",
-      "replaces": "DotnetTemplateDemo",
+      "FileRename": "ServiceDemo",
+      "replaces": "ServiceDemo",
       "isRequired": true
     },
     "lowerCaseServiceName": {
@@ -30,7 +30,7 @@
         "source": "serviceName",
         "toLower": true
       },
-      "replaces": "dotnettemplatedemo"
+      "replaces": "servicedemo"
     },
     "useAutomation": {
       "type": "parameter",

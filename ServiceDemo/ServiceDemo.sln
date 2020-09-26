@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetTemplateDemo.Api", "src\DotnetTemplateDemo.Api\DotnetTemplateDemo.Api.csproj", "{77E611A3-9A32-4A7E-A9E9-9B130A249D5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDemo.Api", "src\ServiceDemo.Api\ServiceDemo.Api.csproj", "{77E611A3-9A32-4A7E-A9E9-9B130A249D5A}"
 EndProject
 #if (useAutomation)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{9B21D099-26CB-4D25-8C5E-F9ED07A0C18B}"
 EndProject
 #endif
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetTemplateDemo.Api.Tests", "tests\DotnetTemplateDemo.Api.Tests\DotnetTemplateDemo.Api.Tests.csproj", "{BF8ED7F0-02FB-4145-9C7C-4AD832B937BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDemo.Api.Tests", "tests\ServiceDemo.Api.Tests\ServiceDemo.Api.Tests.csproj", "{BF8ED7F0-02FB-4145-9C7C-4AD832B937BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

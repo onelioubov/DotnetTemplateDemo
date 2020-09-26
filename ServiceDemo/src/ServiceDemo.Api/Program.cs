@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace DotnetTemplateDemo.Api
+namespace ServiceDemo.Api
 {
     public class Program
     {

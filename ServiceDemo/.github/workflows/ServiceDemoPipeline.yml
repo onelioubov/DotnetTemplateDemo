@@ -1,4 +1,4 @@
-name: DotnetTemplateDemo Pipeline
+name: ServiceDemo Pipeline
 
 on:
   push:
@@ -24,6 +24,6 @@ jobs:
       - name: Run Azure webapp deploy action using publish profile credentials
         uses: azure/webapps-deploy@v2
         with:
-          app-name: service-dotnettemplatedemo-api
+          app-name: service-servicedemo-api
           publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-          package: './artifacts/DotnetTemplateDemo.Api'
+          package: './artifacts/ServiceDemo.Api'
