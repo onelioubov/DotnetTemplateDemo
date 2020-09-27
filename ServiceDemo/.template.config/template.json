@@ -78,9 +78,22 @@
       "manualInstructions": [{ "text": "Run 'chmod +x *.sh'" }],
       "actionId": "CB9A6CF3-4F5C-4860-B9D2-03A574959774",
       "args": {
-        "+x": "build.sh"
+        "+x": "*.sh"
       },
       "continueOnError": true
+    },
+    {
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "description": "Sets up the local and remote git repo and creates an initial commit to [main] by calling initializeGitRepo.sh",
+      "args": {
+        "executable": "initializeGitRepo.sh",
+        "args": "",
+        "redirectStandardOutput": "false"
+      },
+      "manualInstructions": [{
+        "text": "Run 'initializeGitRepo.sh'"
+      }],
+      "continueOnError": false
     }
   ],
   "placeholderFilename": "-.-"
