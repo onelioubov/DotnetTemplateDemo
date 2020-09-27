@@ -45,4 +45,8 @@ resource "azurerm_app_service" "servicedemo_api" {
     ignore_changes = [tags]
   }
   tags = local.common_tags
+
+  provisioner "local-exec" {
+    command = "printf \"\\n\\nAdd the following publish profile as a new secret called azureWebAppPublishProfile in the GitHub repo prior to deploying to the new Azure Web App:\\n\\n$(az webapp deployment list-publishing-profiles --name ${azurerm_app_service.servicedemo_api.name} --resource-group ${azurerm_resource_group.servicedemorg.name} --subscription \"${data.azurerm_subscription.sub.display_name}\" --xml | sed 's/\\\\//g' | sed 's/^.\\(.*\\).$/\\1/')\\n\\n\""
+  }
 }
