@@ -70,14 +70,13 @@ class Build : NukeBuild
         {
             var testProjects = Solution.AllProjects.Where(project =>
                 project.Path.ToString().Contains(TestsDirectory.ToString()));
-            foreach (var testProject in testProjects)
-            {
-                DotNetTest(t => t.EnableNoBuild()
-                    .SetProjectFile(testProject)
-                    .SetConfiguration(Configuration)
-                    .SetWorkingDirectory(TestsDirectory)
-                    .SetLogger("nunit;LogFilePath=TestResults/" + testProject.Name + "-Result.xml"));
-            }
+            DotNetTest(t => t
+                .EnableNoBuild()
+                .SetConfiguration(Configuration)
+                .SetWorkingDirectory(TestsDirectory)
+                .CombineWith(x => testProjects.Select(p => x
+                    .SetProjectFile(p)
+                    .SetLogger("nunit;LogFilePath=TestResults/" + p.Name + "-Result.xml"))));
         });
     
     Target GenerateClient => _ => _
@@ -130,25 +129,17 @@ class Build : NukeBuild
         {
             var projectSolution = Solution.AllProjects.Where(p =>
                 !p.Name.Contains("Tests")
-                && !p.Name.Contains("build"));
-
-            foreach (var project in projectSolution)
-            {
-                if (project.Is(ProjectType.CSharpProject))
-                {
-                    DotNetPublish(s => s
-                        .SetProject(project)
-                        .SetConfiguration(Configuration)
-                        .SetAssemblyVersion(GitVersion.AssemblySemVer)
-                        .SetFileVersion(GitVersion.AssemblySemFileVer)
-                        .SetInformationalVersion(GitVersion.InformationalVersion)
-                        .EnableNoRestore()
-                        .SetOutput(ArtifactsDirectory / project.Name));
-                }
-                else
-                {
-                    Logger.Warn("Project type for " + project.Name + " is unsupported.");
-                }
-            }
+                && !p.Name.Contains("build")
+                && p.Is(ProjectType.CSharpProject));
+        
+            DotNetPublish(s => s
+                .SetConfiguration(Configuration)
+                .SetAssemblyVersion(GitVersion.AssemblySemVer)
+                .SetFileVersion(GitVersion.AssemblySemFileVer)
+                .SetInformationalVersion(GitVersion.InformationalVersion)
+                .EnableNoRestore()
+                .CombineWith(x => projectSolution.Select(p => x
+                    .SetProject(p)
+                    .SetOutput(ArtifactsDirectory / p.Name))));
         });
 }
