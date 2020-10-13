@@ -74,9 +74,9 @@ class Build : NukeBuild
                 .EnableNoBuild()
                 .SetConfiguration(Configuration)
                 .SetWorkingDirectory(TestsDirectory)
-                .CombineWith(x => testProjects.Select(p => x
+                .CombineWith(testProjects, (x, p) => x
                     .SetProjectFile(p)
-                    .SetLogger("nunit;LogFilePath=TestResults/" + p.Name + "-Result.xml"))));
+                    .SetLogger("nunit;LogFilePath=TestResults/" + p.Name + "-Result.xml")));
         });
     
     Target GenerateClient => _ => _
@@ -138,8 +138,8 @@ class Build : NukeBuild
                 .SetFileVersion(GitVersion.AssemblySemFileVer)
                 .SetInformationalVersion(GitVersion.InformationalVersion)
                 .EnableNoRestore()
-                .CombineWith(x => projectSolution.Select(p => x
+                .CombineWith(projectSolution, (x, p) => x
                     .SetProject(p)
-                    .SetOutput(ArtifactsDirectory / p.Name))));
+                    .SetOutput(ArtifactsDirectory / p.Name)));
         });
 }
