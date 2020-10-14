@@ -13,21 +13,13 @@
     "language": "C#",
     "type": "item"
   },
+  "sourceName": "ServiceDemo",
   "symbols": {
-    "serviceName": {
-      "type": "parameter",
-      "datatype": "string",
-      "description": "This is what the solution will be called, along with the corresponding API and Tests projects",
-      "defaultValue": "generic",
-      "FileRename": "ServiceDemo",
-      "replaces": "ServiceDemo",
-      "isRequired": true
-    },
     "lowerCaseServiceName": {
       "type": "generated",
       "generator": "casing",
       "parameters": {
-        "source": "serviceName",
+        "source": "name",
         "toLower": true
       },
       "replaces": "servicedemo"
